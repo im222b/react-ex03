@@ -66,9 +66,9 @@ function ToDoList() {
                 <span>{errors?.firstname?.message as string}</span>
                 <input {...register("lastname",{ required:"이름을 입력하시오." })} placeholder="이름" />
                 <span>{errors?.lastname?.message as string}</span>
-                <input {...register("usename",{ required:"닉네임을 입력하시오.", minLength: {
+                <input {...register("username",{ required:"닉네임을 입력하시오.", minLength: {
                     value :10, message: "10글자 이상이여야 합니다." }})} placeholder="닉네임" />
-                <span>{errors?.usename?.message as string}</span>
+                <span>{errors?.username?.message as string}</span>
                 <input {...register("password",{ required:"비번을 입력하시오." })} placeholder="비번" />
                 <span>{errors?.password?.message as string}</span>
                 <input {...register("password1",{ required:"비번을 입력하시오", minLength: {
