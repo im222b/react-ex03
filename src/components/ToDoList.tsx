@@ -11,6 +11,7 @@ function ToDoList() {
     const onInput = (event:React.FormEvent<HTMLSelectElement>) => {
         setCatgory(event.currentTarget.value as any);
     };
+    console.log(toDos);
 
     return (<div> 
         <h1>To Dos</h1>
@@ -19,6 +20,8 @@ function ToDoList() {
             <option value={Categories.TO_DO} >할 일</option>
             <option value={Categories.DOING} >하 는 중</option>
             <option value={Categories.DONE} >완 료</option>
+            
+
         </select>
         <CreateToDo />    
         {toDos?.map((toDo) => (

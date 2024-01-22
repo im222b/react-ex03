@@ -33,6 +33,10 @@ function ToDo({text, category , id  }:IToDo){
             {category !== Categories.DONE && (
             <button name={Categories.DONE}
             onClick={onClick}>완료</button>)}
+
+            {category !== Categories.DELETE && (
+            <button name={Categories.DELETE}
+            onClick={onClick}>삭제</button>)}
     </li>
     );
 }
