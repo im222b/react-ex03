@@ -1,11 +1,7 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
-import { IToDo, toDoState } from "../atoms";
+import { Categories, IToDo, toDoState } from "../atoms";
 
-const food = [ "pizza", "mango", "kimchi", " kimbab"] 
-const front = ["pizza"]
-const back = [ "kimchi", " kimbab"] 
-const finalPart = [...front, "감", ...back]
 
 function ToDo({text, category , id  }:IToDo){
     const setToDos = useSetRecoilState(toDoState);
@@ -26,13 +22,16 @@ function ToDo({text, category , id  }:IToDo){
     return (
     <li >
         <span>{text}</span> 
-            {category !== "TO_DO" &&(<button name="TO_DO"
+            {category !== Categories.TO_DO &&(
+            <button name={Categories.TO_DO}
             onClick={onClick}>할일</button>)}
             
-            {category !== "DOING" &&(<button name="DOING"
+            {category !== Categories.DOING &&(
+            <button name={Categories.DOING}
             onClick={onClick}>하는중...</button>)}
             
-            {category !== "DONE" && (<button name="DONE"
+            {category !== Categories.DONE && (
+            <button name={Categories.DONE}
             onClick={onClick}>완료</button>)}
     </li>
     );
