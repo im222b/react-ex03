@@ -1,6 +1,7 @@
 import { Droppable } from "react-beautiful-dnd";
 import DragabbleCard from "./DragabbleCard";
 import styled from "styled-components";
+import { useRef } from "react";
 
 interface IBoardProps {
     toDos : string[];
@@ -16,7 +17,7 @@ const Title = styled.h2`
 `;
 
 const Wrapper = styled.div`
-    padding: 20px 5px 20px 5px ;
+    padding: 20px 0px 0px 0px ;
     background-color: ${(props) => props.theme.boardColor};
     border-radius: 5px;
     min-height: 200px;
@@ -31,7 +32,7 @@ interface IAreaProps {
 
 const Area = styled.div<IAreaProps>`
     background-color: ${props => props.isDraggingOver ? "#dfe6e9" : 
-    props.isDraggingFromThis ? "#b2bec3" :"#aaa69d" };
+    props.isDraggingFromThis ? "#d2bec3" :"#aaa69d" };
     flex-grow: 1;
     transition: background-color .3s ease-in-out;
     padding: 20px;
@@ -39,10 +40,19 @@ const Area = styled.div<IAreaProps>`
 `;
 
 function Board({toDos, boardId}: IBoardProps){
-    return (
     
+    const inputRef = useRef<HTMLInputElement>(null);
+    const onClick = ( ) => {
+        inputRef.current?.focus();
+    };
+
+    return (
     <Wrapper>
-        <Title>{boardId}</Title>    
+        <Title>{boardId}</Title>
+        
+        <input ref={inputRef} placeholder="grab Me"/>
+        <button onClick={onClick}>Click Me</button>    
+        
         <Droppable droppableId={boardId}>
             {(magic, info) => (
             <Area 
