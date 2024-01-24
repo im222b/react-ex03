@@ -8,8 +8,8 @@ interface IToDoState {
 export const toDoState = atom<IToDoState>({
     key : "toDo",
     default :  {
-        "To do" : ["a","b","c",],
-        Doing : ["d","e",],
-        Done : ["f"],
+        "해야 할일🤔" : ["a","b","c",],
+        "하고 있는 중...✍️" : ["d","e",],
+        "다 했다!😎" : ["f"],
     },
 });
