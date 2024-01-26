@@ -35,10 +35,11 @@ function App() {
       //보드간에 변동이 없을떄
       setToDos((allBoards) => {
       const boardCopy = [...allBoards[source.droppableId]]
+      const taskObj = boardCopy[source.index]
       //기존것을 삭제   클릭한 지점 , 하나를 지운다
       boardCopy.splice(source.index, 1);
       //변경된것을 추가    변경할 위치, 지우지 않음 , 저장할 위치
-      boardCopy.splice(destination?.index, 0, draggableId);
+      boardCopy.splice(destination?.index, 0, taskObj);
       return {
         ...allBoards,
         [source.droppableId] : boardCopy
@@ -49,9 +50,10 @@ function App() {
       // 보드 간 움직임
       setToDos((allBoards) => {
         const sourceBoard = [...allBoards[source.droppableId]];
+        const taskObj = sourceBoard[source.index]
         const destinationBoard = [...allBoards[destination.droppableId]];
         sourceBoard.splice(source.index, 1);
-        destinationBoard.splice(destination?.index, 0 , draggableId);
+        destinationBoard.splice(destination?.index, 0 , taskObj);
         return {
           ...allBoards,
           [source.droppableId]:sourceBoard,
@@ -60,7 +62,7 @@ function App() {
       })
     }
   };
-
+  
   return (
     <DragDropContext onDragEnd={onDragEnd}>
     <Wrapper>
